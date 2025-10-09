@@ -2,7 +2,7 @@ vim.lsp.enable({
   "lua_ls",
   "vimls",
   "pyright",
-  "ts_ls",
+  "vtsls",
   "cssls",
   "clojure_lsp"
 })
