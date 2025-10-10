@@ -49,7 +49,7 @@ return {
                 completion = {
                     menu = {
                         border = nil,
-                        scrolloff = 1,
+                        scrolloff = 0,
                         scrollbar = false,
                         draw = {
                             columns = {
