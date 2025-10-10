@@ -45,6 +45,12 @@ return {
                     },
                 },
                 completion = {
+                    list = {
+                      selection = {
+                        preselect = false,
+                        auto_insert = false,
+                      }
+                    },
                     menu = {
                         border = nil,
                         scrolloff = 0,
