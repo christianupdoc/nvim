@@ -23,6 +23,7 @@ autocmd("FileType", {
   end,
 })
 
+-- Lsp
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
     callback = function(event)
@@ -78,4 +79,21 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end
     end,
 
+})
+
+-- Clojure
+-- I swear if this breaks I will break Kaveh
+autocmd("FileType", {
+  pattern = "clojure",
+  callback = function ()
+    vim.opt_local.iskeyword:remove(".")
+    vim.opt_local.iskeyword:append({ "?", "!", ":", "/", ";" })
+  end,
+})
+
+autocmd("BufWritePost", {
+  pattern = {"*.clj", "*.edn"},
+  callback = function ()
+    vim.fn.jobstart({ "zprint", "-w", vim.fn.expand("%") }, { detach = true })
+  end
 })
