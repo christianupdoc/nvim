@@ -24,13 +24,12 @@ return {
                 },
                 keymap = {
                   preset = "enter",
-
+                  ["<CR>"] = { "accept_and_enter", "fallback" },
                   ["<Tab>"] = {
                     "select_next",
                     "snippet_forward",
                     "fallback",
                   },
-
                   ["<S-Tab>"] = {
                     "select_prev",
                     "snippet_backward",
