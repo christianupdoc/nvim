@@ -24,7 +24,6 @@ return {
                 },
                 keymap = {
                   preset = "enter",
-                  ["<CR>"] = { "accept_and_enter", "fallback" },
                   ["<Tab>"] = {
                     "select_next",
                     "snippet_forward",
