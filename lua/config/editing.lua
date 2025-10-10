@@ -67,3 +67,6 @@ o.mouse = "a"
 o.hlsearch = true
 o.ignorecase = true
 o.smartcase = true
+
+-- Right split preference
+vim.cmd('set spr')
