@@ -38,3 +38,6 @@ map('n', '<leader>m', '<cmd>MarkdownPreview<CR>')
 
 -- Which Key
 map('n', '<leader>w', '<cmd>WhichKey<CR>')
+
+-- Conjure
+map('n','<leader>ee', '<cmd>ConjureEval<CR>')

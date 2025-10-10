@@ -59,15 +59,6 @@ return {
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release' },
     {"karb94/neoscroll.nvim"},
     {"Olical/conjure"},
-    require("lazy").setup({
-      {"eraserhd/parinfer-rust", build = "cargo build --release"}
-    }),
-    require("lazy").setup({
-      {
-        "Grazfather/sexp.nvim",
-        config = {
-          -- Your config goes here, or just set to true to use default settings
-        }
-      },
-    })
+    {"eraserhd/parinfer-rust", build = "cargo build --release"},
+    {"Grazfather/sexp.nvim"},
 }
