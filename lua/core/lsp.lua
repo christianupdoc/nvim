@@ -4,7 +4,8 @@ vim.lsp.enable({
   "pyright",
   "vtsls",
   "cssls",
-  "clojure_lsp"
+  "clojure_lsp",
+  "jsonls"
 })
 
 
