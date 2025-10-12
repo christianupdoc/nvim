@@ -8,7 +8,7 @@ local w = vim.wo
 
 -- Tabs/Indentation
 o.autoindent = true
-o.smarttab = true
+o.smartindent = true
 o.tabstop = 4
 o.expandtab = true
 o.softtabstop = 4

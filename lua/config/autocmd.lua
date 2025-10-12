@@ -82,7 +82,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 -- Clojure
--- I swear if this breaks I will break Kaveh
 autocmd("FileType", {
   pattern = "clojure",
   callback = function ()
