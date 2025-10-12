@@ -6,7 +6,6 @@ autocmd("FileType", {
     "vim",
     "html",
     "css",
-    "json",
     "javascript",
     "javascriptreact",
     "markdown.mdx",
@@ -20,6 +19,18 @@ autocmd("FileType", {
     vim.opt.shiftwidth = 2
     vim.opt.softtabstop = 2
     vim.opt.tabstop = 2
+  end,
+})
+
+-- JSON
+autocmd("FileType", {
+  pattern = {
+    "json"
+  },
+  callback = function()
+    vim.opt.tabstop=2
+    vim.opt.shiftwidth=2
+    vim.opt.expandtab=true
   end,
 })
 
