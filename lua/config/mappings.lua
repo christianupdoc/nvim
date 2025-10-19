@@ -1,6 +1,6 @@
 -- MAPPINGS
 local function map(m, k, v)
-    vim.keymap.set(m, k, v, { silent = true })
+  vim.keymap.set(m, k, v, { silent = true })
 end
 
 -- Easy save
@@ -30,9 +30,6 @@ map('n', 'bd', '<CMD>bdelete<CR>')
 -- lazygit
 map('n', '<leader>lg', '<CMD>LazyGit<CR>')
 
--- Trouble
-map('n', '<leader>t', '<cmd>TroubleToggle<CR>')
-
 -- Markdown Preview
 map('n', '<leader>m', '<cmd>MarkdownPreview<CR>')
 
@@ -40,19 +37,27 @@ map('n', '<leader>m', '<cmd>MarkdownPreview<CR>')
 map('n', '<leader>w', '<cmd>WhichKey<CR>')
 
 -- Goto Definitions
-  vim.api.nvim_create_autocmd('LspAttach', {
-      callback = function(args)
-          local buf = args.buf
-          -- Map the keybind for 'gd' for the LSP client
-          vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {buffer = buf, noremap = true, silent = true})
-      end
-  })
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(args)
+    local buf = args.buf
+    -- Map the keybind for 'gd' for the LSP client
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = buf, noremap = true, silent = true })
+  end
+})
 
 -- Goto Implementation
-  vim.api.nvim_create_autocmd('LspAttach', {
-      callback = function(args)
-          local buf = args.buf
-          -- Map the keybind for 'gi' for the LSP client
-          vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, {buffer = buf, noremap = true, silent = true})
-      end
-  })
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(args)
+    local buf = args.buf
+    -- Map the keybind for 'gi' for the LSP client
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { buffer = buf, noremap = true, silent = true })
+  end
+})
+
+-- Goto References
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local buf= args.buf
+    vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = buf, desc = "Go to References" })
+  end
+})
