@@ -58,6 +58,7 @@ return {
     {"saghen/blink.cmp"},
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release' },
     {"karb94/neoscroll.nvim"},
+    { "rcarriga/nvim-dap-ui", dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"} },
     {"Olical/conjure"},
     {"eraserhd/parinfer-rust", build = "cargo build --release"},
     {"Grazfather/sexp.nvim"},
@@ -73,5 +74,6 @@ return {
         }
       }
     end
-    }
+    },
+    {'stevearc/overseer.nvim' }
 }
