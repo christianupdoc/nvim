@@ -28,7 +28,7 @@ map('n', 'b[', '<CMD>BufferLineCyclePrev<CR>')
 map('n', 'bd', '<CMD>bdelete<CR>')
 
 -- lazygit
-map('n', '<leader>lg', '<CMD>LazyGit<CR>')
+map('n', '<leader>gz', '<CMD>LazyGit<CR>')
 
 -- Markdown Preview
 map('n', '<leader>m', '<cmd>MarkdownPreview<CR>')
@@ -57,7 +57,28 @@ vim.api.nvim_create_autocmd('LspAttach', {
 -- Goto References
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
-    local buf= args.buf
+    local buf = args.buf
     vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = buf, desc = "Go to References" })
   end
+})
+
+-- Format on save with zprint
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = { "*.clj", "*.cljs", "*.edn" },
+  callback = function()
+    -- Use zprint for Clojure files
+    local filename = vim.fn.expand("%:p")
+    if vim.fn.filereadable(filename) == 1 then
+      vim.fn.jobstart({ "zprint", "-w", filename }, {
+        on_exit = function(_, code)
+          if code == 0 then
+            vim.schedule(function()
+              vim.cmd("checktime")
+            end)
+          end
+        end,
+      })
+    end
+  end,
+  desc = "Format Clojure files with zprint on save"
 })
