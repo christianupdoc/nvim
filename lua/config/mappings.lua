@@ -25,6 +25,7 @@ map('n', '<leader>6', '<CMD>NvimTreeFindFileToggle<CR>')
 -- bufferline
 map('n', 'b]', '<CMD>BufferLineCycleNext<CR>')
 map('n', 'b[', '<CMD>BufferLineCyclePrev<CR>')
+map('n', 'bb', '<CMD>BufferLinePick<CR>')
 map('n', 'bd', '<CMD>bdelete<CR>')
 
 -- lazygit
