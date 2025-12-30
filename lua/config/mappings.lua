@@ -83,3 +83,15 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   end,
   desc = "Format Clojure files with zprint on save"
 })
+
+-- Integrant
+local function reset_integrant()
+	vim.cmd([[ConjureEval (integrant.repl/reset)]])
+end
+
+local function run_tests()
+	vim.cmd([[ConjureEval (clojure.test/run-all-tests #"updoc.+\.test")]])
+end
+
+vim.keymap.set("n", "<localleader>kr", reset_integrant, { noremap = true, silent = true, desc = "Integrant reset" })
+vim.keymap.set("n", "<localleader>kt", run_tests, { noremap = true, silent = true, desc = "Run tests" })
