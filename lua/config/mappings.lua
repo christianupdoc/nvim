@@ -63,26 +63,23 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end
 })
 
--- Format on save with zprint
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = { "*.clj", "*.cljs", "*.edn" },
-  callback = function()
-    -- Use zprint for Clojure files
-    local filename = vim.fn.expand("%:p")
-    if vim.fn.filereadable(filename) == 1 then
-      vim.fn.jobstart({ "zprint", "-w", filename }, {
-        on_exit = function(_, code)
-          if code == 0 then
-            vim.schedule(function()
-              vim.cmd("checktime")
-            end)
-          end
-        end,
-      })
-    end
-  end,
-  desc = "Format Clojure files with zprint on save"
-})
+-- Format with zprint
+local function format_with_zprint()
+  local filename = vim.fn.expand("%:p")
+  if vim.fn.filereadable(filename) == 1 then
+    vim.fn.jobstart({ "zprint", "-w", filename }, {
+      on_exit = function(_, code)
+        if code == 0 then
+          vim.schedule(function()
+            vim.cmd("checktime")
+          end)
+        end
+      end,
+    })
+  end
+end
+
+vim.keymap.set("n", "<leader>ll", format_with_zprint, { noremap = true, silent = true, desc = "Format with zprint" })
 
 -- Integrant
 local function reset_integrant()
