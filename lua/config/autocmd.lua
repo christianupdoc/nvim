@@ -104,6 +104,15 @@ autocmd("FileType", {
 autocmd("BufWritePost", {
   pattern = {"*.clj", "*.edn"},
   callback = function ()
-    vim.fn.jobstart({ "zprint", "-w", vim.fn.expand("%") }, { detach = true })
+    local filename = vim.fn.expand("%:p")
+    vim.fn.jobstart({ "zprint", "-w", filename }, {
+      on_exit = function(_, code)
+        if code == 0 then
+          vim.schedule(function()
+            vim.cmd("checktime")
+          end)
+        end
+      end,
+    })
   end
 })
