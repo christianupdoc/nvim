@@ -79,7 +79,7 @@ local function format_with_zprint()
   end
 end
 
-vim.keymap.set("n", "<leader>ll", format_with_zprint, { noremap = true, silent = true, desc = "Format with zprint" })
+vim.keymap.set("n", "<leader>kz", format_with_zprint, { noremap = true, silent = true, desc = "Format with zprint" })
 
 -- Integrant
 local function reset_integrant()
