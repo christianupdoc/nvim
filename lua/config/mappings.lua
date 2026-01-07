@@ -41,7 +41,6 @@ map('n', '<leader>w', '<cmd>WhichKey<CR>')
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
     local buf = args.buf
-    -- Map the keybind for 'gd' for the LSP client
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = buf, noremap = true, silent = true })
   end
 })

@@ -5,13 +5,7 @@ return {
   settings = {
     ["clojure-lsp"] = {
         formatting = {
-        enable = true,
-        formatters = {
-          zprint = {
-            command = "zprint",
-            args = {"-"}
-          },
-        },
+        enable = false,
       },
     },
   },
