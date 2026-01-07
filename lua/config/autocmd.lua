@@ -101,4 +101,23 @@ autocmd("FileType", {
   end,
 })
 
+-- Handle zipfile:// URIs for clojure-lsp jar navigation
+autocmd("BufReadCmd", {
+  pattern = "zipfile://*",
+  callback = function(ev)
+    local uri = ev.match
+    local jar_path, inner_path = uri:match("^zipfile://(.+)::(.+)$")
+    if jar_path and inner_path then
+      local content = vim.fn.system({ "unzip", "-p", jar_path, inner_path })
+      if vim.v.shell_error == 0 then
+        local lines = vim.split(content, "\n", { plain = true })
+        vim.api.nvim_buf_set_lines(ev.buf, 0, -1, false, lines)
+        vim.bo[ev.buf].buftype = "nofile"
+        vim.bo[ev.buf].modifiable = false
+        vim.bo[ev.buf].filetype = "clojure"
+      end
+    end
+  end,
+})
+
 
