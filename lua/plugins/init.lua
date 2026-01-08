@@ -1,6 +1,27 @@
 return {
     -- Theme
-    { "catppuccin/nvim", name = "catppuccin" },
+    { "catppuccin/nvim", name = "catppuccin", priority = 1000,
+      config = function()
+        require("catppuccin").setup({
+          flavour = "macchiato",
+          transparent_background = false,
+          term_colors = true,
+          integrations = {
+            blink_cmp = true,
+            gitsigns = true,
+            indent_blankline = { enabled = true, colored_indent_levels = false },
+            mason = true,
+            noice = true,
+            notify = true,
+            nvimtree = true,
+            rainbow_delimiters = true,
+            telescope = { enabled = true },
+            treesitter = true,
+            which_key = true,
+          },
+        })
+      end
+    },
     'nvim-tree/nvim-web-devicons',
 
     { 'nvim-telescope/telescope.nvim', version = '0.1.2', dependencies = { {'nvim-lua/plenary.nvim'} } }, -- <leader>ff / <C-p>

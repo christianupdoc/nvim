@@ -18,6 +18,15 @@ return {
   config = function()
       require("telescope").setup({
         defaults = {
+          borderchars = {
+            prompt = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+            results = { "─", "│", "─", "│", "╭", "╮", "┤", "├" },
+            preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+          },
+          layout_config = {
+            prompt_position = "bottom",
+          },
+          sorting_strategy = "descending",
           mappings = {
             i = {
               ["<esc>"] = actions.close
