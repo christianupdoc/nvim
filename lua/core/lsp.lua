@@ -5,7 +5,8 @@ vim.lsp.enable({
   "vtsls",
   "cssls",
   "clojure_lsp",
-  "jsonls"
+  "jsonls",
+  "sqlls"
 })
 
 
