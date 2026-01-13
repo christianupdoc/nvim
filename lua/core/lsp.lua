@@ -6,13 +6,13 @@ vim.lsp.enable({
   "cssls",
   "clojure_lsp",
   "jsonls",
-  "sqlls"
+  "sqls"
 })
 
 
 vim.diagnostic.config({
     virtual_lines = false,
-    virtual_text = true,
+    virtual_text = false,
     underline = false,
     update_in_insert = false,
     severity_sort = true,
@@ -32,4 +32,12 @@ vim.diagnostic.config({
             [vim.diagnostic.severity.WARN] = "WarningMsg",
         },
     },
+})
+
+vim.opt.updatetime = 250
+
+vim.api.nvim_create_autocmd("CursorHold", {
+    callback = function()
+        vim.diagnostic.open_float(nil, { focusable = false })
+    end,
 })
