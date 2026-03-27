@@ -20,11 +20,12 @@ return {
             which_key = true,
           },
         })
+        vim.cmd.colorscheme("catppuccin")
       end
     },
     'nvim-tree/nvim-web-devicons',
 
-    { 'nvim-telescope/telescope.nvim', version = '0.1.2', dependencies = { {'nvim-lua/plenary.nvim'} } }, -- <leader>ff / <C-p>
+
     { 'nvim-treesitter/nvim-treesitter', branch = 'main', build = ':TSUpdate' },
 
     -- LSP

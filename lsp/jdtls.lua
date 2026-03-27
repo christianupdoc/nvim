@@ -1,5 +1,8 @@
 return {
   cmd = { 'jdtls' },
+  cmd_env = {
+    JAVA_HOME = '/opt/homebrew/opt/openjdk@21',
+  },
   filetypes = { 'java' },
   root_markers = {
     'build.gradle',
