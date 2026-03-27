@@ -1,15 +1,11 @@
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "css", "cpp", "python", "javascript", "html", "css", "json"},
-  sync_install = false,
-  auto_install = true,
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = false,
-  },
-  indent = {
-    enable = true,
-  },
-}
+vim.treesitter.language.register('swift', 'swift')
+
+-- Auto-install parsers when opening a file
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function(args)
+    pcall(vim.treesitter.start, args.buf)
+  end,
+})
 
 require('nvim-ts-autotag').setup({
     autotag = {

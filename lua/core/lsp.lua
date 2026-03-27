@@ -7,7 +7,8 @@ vim.lsp.enable({
   "clojure_lsp",
   "jsonls",
   "sqls",
-  "sourcekit"
+  "sourcekit",
+  "jdtls"
 })
 
 
