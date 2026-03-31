@@ -1,5 +1,11 @@
 local autocmd = vim.api.nvim_create_autocmd
 
+-- Auto-reload files changed outside of Neovim
+vim.o.autoread = true
+autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
+  command = "if mode() != 'c' | checktime | endif",
+})
+
 -- For filetypes that use 2 space indent
 autocmd("FileType", {
   pattern = {
