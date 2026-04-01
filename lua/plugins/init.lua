@@ -91,7 +91,7 @@ return {
       vim.o.timeoutlen = 300
     end
     },
-    { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
+
     { "HiPhish/rainbow-delimiters.nvim"},
     {"saghen/blink.cmp"},
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release' },
