@@ -92,4 +92,7 @@ end
 vim.keymap.set("n", "<localleader>kr", reset_integrant, { noremap = true, silent = true, desc = "Integrant reset" })
 vim.keymap.set("n", "<localleader>kt", run_tests, { noremap = true, silent = true, desc = "Run tests" })
 
+-- Format
+vim.keymap.set("n", "<leader>lf", function() vim.lsp.buf.format({ async = true }) end, { noremap = true, silent = true, desc = "Format file" })
+
 -- Toggle diagnostics

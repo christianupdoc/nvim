@@ -1,3 +1,13 @@
+local function get_python_path(root)
+  for _, venv in ipairs({ 'env', '.venv', 'venv' }) do
+    local path = root .. '/' .. venv .. '/bin/python'
+    if vim.uv.fs_stat(path) then
+      return path
+    end
+  end
+  return nil
+end
+
 return {
   cmd = { 'pyright-langserver', '--stdio' },
   filetypes = { 'python' },
@@ -10,6 +20,12 @@ return {
     'pyrightconfig.json',
     '.git',
   },
+  before_init = function(_, config)
+    local python_path = get_python_path(config.root_dir)
+    if python_path then
+      config.settings.python.pythonPath = python_path
+    end
+  end,
   settings = {
     python = {
       analysis = {

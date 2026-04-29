@@ -8,7 +8,8 @@ vim.lsp.enable({
   "jsonls",
   "sqls",
   "sourcekit",
-  "jdtls"
+  "jdtls",
+  "terraformls"
 })
 
 
