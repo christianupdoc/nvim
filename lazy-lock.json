@@ -48,5 +48,6 @@
   "sexp.nvim": { "branch": "master", "commit": "2a7c48d602dcb3fb39978c5ad8f1890cb4e95940" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "6fea601bd2b694c6f2ae08a6c6fab14930c60e2c" },
   "telescope.nvim": { "branch": "master", "commit": "5255aa27c422de944791318024167ad5d40aad20" },
-  "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" }
+  "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" },
+  "whisk.nvim": { "branch": "main", "commit": "fa2f6ba9c7226552c034a1e75ee6fa757e427737" }
 }
