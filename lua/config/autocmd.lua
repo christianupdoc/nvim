@@ -22,9 +22,9 @@ autocmd("FileType", {
     "zsh",
   },
   callback = function()
-    vim.opt.shiftwidth = 2
-    vim.opt.softtabstop = 2
-    vim.opt.tabstop = 2
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.softtabstop = 2
+    vim.opt_local.tabstop = 2
   end,
 })
 
@@ -34,9 +34,9 @@ autocmd("FileType", {
     "json"
   },
   callback = function()
-    vim.opt.tabstop=2
-    vim.opt.shiftwidth=2
-    vim.opt.expandtab=true
+    vim.opt_local.tabstop = 2
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.expandtab = true
   end,
 })
 
