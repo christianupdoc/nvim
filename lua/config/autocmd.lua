@@ -99,6 +99,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 -- Python
+vim.g.python_indent = {
+  open_paren = 'shiftwidth()',
+  nested_paren = 'shiftwidth()',
+  continue = 'shiftwidth()',
+  closed_paren_align_last_line = false,
+}
+
 autocmd("FileType", {
   pattern = "python",
   callback = function()
