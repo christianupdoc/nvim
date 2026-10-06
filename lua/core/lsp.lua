@@ -1,3 +1,13 @@
+-- Overrides nvim-lspconfig's terraformls on_attach, which calls the
+-- 0.12-only vim.lsp.codelens.enable() and errors on 0.11.
+vim.lsp.config("terraformls", {
+  on_attach = function(_, bufnr)
+    if vim.lsp.codelens and vim.lsp.codelens.enable then
+      vim.lsp.codelens.enable(true, { bufnr = bufnr })
+    end
+  end,
+})
+
 vim.lsp.enable({
   "lua_ls",
   "vimls",
@@ -9,7 +19,8 @@ vim.lsp.enable({
   "sqls",
   "sourcekit",
   "jdtls",
-  "terraformls"
+  "terraformls",
+  "prisma"
 })
 
 

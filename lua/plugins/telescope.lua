@@ -30,5 +30,7 @@ return {
     vim.keymap.set('n', '<C-p>', builtin.git_files, {})
     -- Live Grep
     vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+    -- Function definitions only
+    vim.keymap.set('n', '<leader>fn', function() require('funcsearch').search() end, { desc = "Find functions" })
   end,
 }

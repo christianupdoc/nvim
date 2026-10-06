@@ -58,7 +58,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     local buf = args.buf
-    vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = buf, desc = "Go to References" })
+    -- nowait: skip the delay from Neovim's default grr/gra/grn/gri maps
+    vim.keymap.set("n", "gr", function()
+      require("telescope.builtin").lsp_references({ include_declaration = false, show_line = true })
+    end, { buffer = buf, nowait = true, desc = "Go to References" })
   end
 })
 
