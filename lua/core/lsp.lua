@@ -20,7 +20,8 @@ vim.lsp.enable({
   "sourcekit",
   "jdtls",
   "terraformls",
-  "prisma"
+  "prisma",
+  "eslint",
 })
 
 

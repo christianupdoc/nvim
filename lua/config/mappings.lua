@@ -65,6 +65,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end
 })
 
+-- Call hierarchy tree (incoming calls; press t in the tree for outgoing)
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    vim.keymap.set("n", "gh", function() require("callhierarchy").open() end,
+      { buffer = args.buf, desc = "Call hierarchy" })
+  end
+})
+
 -- Format with zprint
 local function format_with_zprint()
   local filename = vim.fn.expand("%:p")
@@ -99,3 +107,21 @@ vim.keymap.set("n", "<localleader>kt", run_tests, { noremap = true, silent = tru
 vim.keymap.set("n", "<leader>lf", function() vim.lsp.buf.format({ async = true }) end, { noremap = true, silent = true, desc = "Format file" })
 
 -- Toggle diagnostics
+
+-- <C-w>] / <C-w>[ widen / narrow the window and start a resize mode: keep
+-- pressing or holding ] or [ to continue, any other key exits and runs normally.
+local function resize_mode(first)
+  local step = { ["]"] = ">", ["["] = "<" }
+  local key = first
+  while step[key] do
+    vim.cmd("2wincmd " .. step[key])
+    vim.cmd("redraw")
+    key = vim.fn.getcharstr()
+  end
+  if key ~= vim.keycode("<Esc>") then vim.api.nvim_feedkeys(key, "m", false) end
+end
+
+for _, key in ipairs({ "]", "[" }) do
+  vim.keymap.set("n", "<C-w>" .. key, function() resize_mode(key) end,
+    { desc = "Resize window width (hold to repeat)" })
+end

@@ -17,7 +17,7 @@ local PATTERNS = {
   -- JS/TS: function declarations
   [=[^\s*(export\s+)?(default\s+)?(async\s+)?function\s*\*?\s*NAME\s*[(<]]=],
   -- JS/TS: const foo = () => / function / async
-  [=[^\s*(export\s+)?(const|let|var)\s+NAME\s*(:[^=]+)?=\s*(async\s+)?(function\b|\([^)]*\)\s*(:[^=]+)?=>|[\w$]+\s*=>|<)]=],
+  [=[^\s*(export\s+)?(const|let|var)\s+NAME\s*(:[^=]+)?=\s*(async\s+)?(function\b|\([^)]*(\)\s*(:[^=]+)?=>|$)|[\w$]+\s*=>|<)]=],
   -- JS/TS: class / object methods
   [=[^\s*((public|private|protected|static|async|readonly|override|abstract|get|set)\s+)*NAME\s*(<[^>]*>)?\([^)]*\)\s*(:\s*[^{;]+)?\{\s*$]=],
   -- Clojure
